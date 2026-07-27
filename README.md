@@ -2,8 +2,8 @@
 An AI-powered sustainability assistant that helps individuals track, understand, and actively reduce their daily carbon footprint through personalized insights and actionable, real-world habits.
 Terra — Campus Sustainability, Made Measurable
 Terra turns raw campus sustainability readings (waste, energy, water) into statistically-verified, accreditation-ready ESG intelligence — built as a prototype for the 1M1B × Microsoft Green Skills & Applied AI Internship.
-Live demo: add your deployed link here (e.g. Vercel/Netlify/GitHub Pages)
-Demo video: add your recording link here
+Live demo: 
+Demo video: 
 The Problem
 Campuses collect sustainability data — but nobody can trust it, act on it, or prove it.
 Waste, energy and water readings live in registers, spreadsheets and WhatsApp groups
@@ -57,5 +57,4 @@ Built for the AICTE 1M1B Green Skills & Applied AI Internship 2026, in partnersh
 GitHub: github.com/swetasaraswat
 LinkedIn: linkedin.com/in/sweta-saraswat-879995367
 Medium: medium.com/@swetasaraswat2
-License
-MIT — see LICENSE for details.
+License. 
