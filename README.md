@@ -33,7 +33,19 @@ Terra is configured once, campus profile, active modules, and zones and from tha
 Terra flags readings using the interquartile range (IQR) method, computed independently per module — waste, energy, and water don't share one blended threshold:
 
 ```js
-// paste your actual IQR calculation function here
+// function percentile(arr, p) {
+  const s = [...arr].sort((a, b) => a - b);
+  const i = (p / 100) * (s.length - 1);
+  const lo = Math.floor(i), hi = Math.ceil(i);
+  return s[lo] + (s[hi] - s[lo]) * (i - lo);
+}
+
+function iqrThreshold(values) {
+  const q1 = percentile(values, 25);
+  const q3 = percentile(values, 75);
+  const iqr = q3 - q1;
+  return { q1, q3, iqr, threshold: q3 + 1.5 * iqr };
+}
 ```
 
 This means the same raw number can be flagged in one zone and pass normally in another — the threshold adapts to that module's own historical spread, not a fixed number.
