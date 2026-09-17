@@ -106,6 +106,4 @@ Built for the AICTE 1M1B Green Skills & Applied AI Internship 2026, in partnersh
 - LinkedIn: [linkedin.com/in/sweta-saraswat-879995367](https://linkedin.com/in/sweta-saraswat-879995367)
 - Medium: [medium.com/@swetasaraswat2](https://medium.com/@swetasaraswat2)
 
-## License
-
-[add license — MIT recommended for a portfolio project
+rtfolio project
