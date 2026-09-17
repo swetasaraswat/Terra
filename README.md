@@ -108,4 +108,4 @@ Built for the AICTE 1M1B Green Skills & Applied AI Internship 2026, in partnersh
 
 ## License
 
-[add license — MIT recommended for a portfolio project]
+[add license — MIT recommended for a portfolio project
