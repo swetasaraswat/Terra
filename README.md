@@ -4,19 +4,19 @@
 **Demo video:** [add link]
 **License:** MIT
 
-Terra turns raw campus sustainability readings — waste, energy, water — into statistically verified, accreditation-ready ESG intelligence. Built as the capstone prototype for the AICTE 1M1B Green Skills & Applied AI Internship, in partnership with Microsoft.
+Terra turns raw campus sustainability readings waste, energy, water into statistically verified, accreditation-ready ESG intelligence. Built as the capstone prototype for the AICTE 1M1B Green Skills & Applied AI Internship, in partnership with Microsoft.
 
 ## The Problem
 
 Indian higher-education institutions are increasingly required to produce environmental audit evidence for accreditation (NAAC Criterion 7), but most campuses have no systematic way to do it:
 
-- Waste, energy, and water readings live scattered across registers, spreadsheets, and WhatsApp groups
-- A leaking pipe or a genuine spike looks identical to normal noise until someone manually reviews every entry
-- Audit evidence gets assembled by hand, once a year, under deadline pressure
+Waste, energy, and water readings live scattered across registers, spreadsheets, and WhatsApp groups
+A leaking pipe or a genuine spike looks identical to normal noise until someone manually reviews every entry
+Audit evidence gets assembled by hand, once a year, under deadline pressure
 
 ## The Solution
 
-Terra is configured once — campus profile, active modules, and zones — and from that point on, every logged reading is automatically checked against a live statistical baseline, flagged if abnormal, and rolled into a dashboard, an alert queue, an ESG scorecard, and a printable report. What used to be an annual manual audit becomes a continuous byproduct of normal data entry.
+Terra is configured once campus profile, active modules, and zones, and from that point on, every logged reading is automatically checked against a live statistical baseline, flagged if abnormal, and rolled into a dashboard, an alert queue, an ESG scorecard, and a printable report. What used to be an annual manual audit becomes a continuous byproduct of normal data entry.
 
 ## Features
 
@@ -49,7 +49,7 @@ function iqrThreshold(values) {
 }
 ```
 
-A reading is flagged when it exceeds `Q3 + 1.5 × IQR` for its own module's historical distribution — the standard statistical definition of an outlier. This means the same raw number can be flagged in one zone and pass normally in another: the threshold adapts to that module's own spread rather than a fixed number picked by hand.
+A reading is flagged when it exceeds `Q3 + 1.5 × IQR` for its own module's historical distribution the standard statistical definition of an outlier. This means the same raw number can be flagged in one zone and pass normally in another: the threshold adapts to that module's own spread rather than a fixed number picked by hand.
 
 ## Onboarding Flow
 
@@ -89,15 +89,13 @@ Terra/
 
 ## Getting Started
 
-Terra runs entirely in the browser — no install, no backend.
+Terra runs entirely in the browser: no install, no backend.
 
 ```bash
 git clone https://github.com/swetasaraswat/Terra.git
 cd Terra
 open index.html
 ```
-
-To deploy: drag the folder into Netlify or Vercel, or enable GitHub Pages on this repo (Settings → Pages → deploy from `main`).
 
 ## Roadmap
 
@@ -107,7 +105,7 @@ To deploy: drag the folder into Netlify or Vercel, or enable GitHub Pages on thi
 
 ## Why It Matters
 
-Every reading logged in Terra produces evidence mapped to NAAC Criterion 7 — Institutional Values & Best Practices — which most colleges currently assemble by hand once a year. Terra generates it continuously, as a byproduct of normal operation, turning a compliance burden into a standing dashboard.
+Every reading logged in Terra produces evidence mapped to NAAC Criterion 7 Institutional Values & Best Practices, which most colleges currently assemble by hand once a year. Terra generates it continuously, as a byproduct of normal operation, turning a compliance burden into a standing dashboard.
 
 ## Author
 
