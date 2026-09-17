@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Terra — an IQR-based anomaly detection platform that turns raw campus waste, energy, and water readings into accreditation-ready ESG evidence.">
+<title>Terra — Campus Sustainability Platform</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌱</text></svg>">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════════════════
+     ONBOARDING
+══════════════════════════════════════════════════════════ -->
+<div id="onboarding">
+  <div class="ob-logo">Terr<span>a</span></div>
+  <div class="ob-tagline">Campus sustainability, made measurable.</div>
+  <div class="ob-progress">
+    <div class="ob-dot active" id="dot-1"></div>
+    <div class="ob-dot" id="dot-2"></div>
+    <div class="ob-dot" id="dot-3"></div>
+  </div>
+
+  <!-- Step 1: Campus Info -->
+  <div class="ob-card" id="step-1">
+    <div class="ob-step-label">Step 1 of 3 &nbsp;·&nbsp; Campus Setup</div>
+    <div class="ob-title">Tell us about your campus</div>
+    <div class="ob-sub">Terra adapts its metrics, thresholds, and reports to your campus size and location. All of this can be updated later.</div>
+    <div class="ob-form">
+      <div class="ob-row">
+        <div class="ob-field"><label>Campus / Institution Name</label><input id="s1-name" placeholder="e.g. VCTM Aligarh" /></div>
+        <div class="ob-field"><label>City</label><input id="s1-city" placeholder="e.g. Aligarh" /></div>
+      </div>
+      <div class="ob-row">
+        <div class="ob-field">
+          <label>Campus Type</label>
+          <select id="s1-type">
+            <option>Engineering College</option>
+            <option>University</option>
+            <option>Arts & Science College</option>
+            <option>Medical College</option>
+            <option>School</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="ob-field">
+          <label>Approximate Student Strength</label>
+          <select id="s1-size">
+            <option value="small">Under 1,000</option>
+            <option value="medium" selected>1,000 – 5,000</option>
+            <option value="large">5,000 – 15,000</option>
+            <option value="xlarge">15,000+</option>
+          </select>
+        </div>
+      </div>
+      <div class="ob-row">
+        <div class="ob-field">
+          <label>Hostel / Residential Campus?</label>
+          <select id="s1-hostel">
+            <option>Yes — residential campus</option>
+            <option>Partial — day scholars + hostel</option>
+            <option>No — day scholars only</option>
+          </select>
+        </div>
+        <div class="ob-field">
+          <label>Primary Contact Role</label>
+          <select id="s1-role">
+            <option>Sustainability Coordinator</option>
+            <option>Student (Research / Project)</option>
+            <option>Facility Manager</option>
+            <option>Faculty / HOD</option>
+            <option>NSS / Green Club Lead</option>
+          </select>
+        </div>
+      </div>
+      <button class="ob-btn" onclick="goStep(2)">Continue →</button>
+    </div>
+  </div>
+
+  <!-- Step 2: Modules -->
+  <div class="ob-card" id="step-2" style="display:none">
+    <div class="ob-step-label">Step 2 of 3 &nbsp;·&nbsp; Choose Modules</div>
+    <div class="ob-title">What do you want to track?</div>
+    <div class="ob-sub">Select the sustainability areas relevant to your campus. Terra activates only the metrics and alerts you need — you can add more later.</div>
+    <div class="ob-form">
+      <div>
+        <div class="ob-field" style="margin-bottom:.5rem"><label>Active Modules (select at least 1)</label></div>
+        <div class="module-grid">
+          <div class="module-chip selected" data-mod="waste"   onclick="toggleMod(this)"><span class="icon">🗑️</span> Waste</div>
+          <div class="module-chip"          data-mod="energy"  onclick="toggleMod(this)"><span class="icon">⚡</span> Energy</div>
+          <div class="module-chip"          data-mod="water"   onclick="toggleMod(this)"><span class="icon">💧</span> Water</div>
+          <div class="module-chip"          data-mod="transport" onclick="toggleMod(this)"><span class="icon">🚌</span> Transport</div>
+          <div class="module-chip"          data-mod="green"   onclick="toggleMod(this)"><span class="icon">🌱</span> Green Space</div>
+          <div class="module-chip"          data-mod="carbon"  onclick="toggleMod(this)"><span class="icon">🌫️</span> Carbon</div>
+        </div>
+      </div>
+      <div class="ob-field">
+        <label>Alert Delivery</label>
+        <select id="s2-alert">
+          <option>Email (to facility manager)</option>
+          <option>Dashboard only</option>
+          <option>WhatsApp group</option>
+          <option>Email + Dashboard</option>
+        </select>
+      </div>
+      <div class="ob-field">
+        <label>Response SLA (max days to acknowledge an alert)</label>
+        <select id="s2-sla">
+          <option value="1">1 day</option>
+          <option value="2" selected>2 days</option>
+          <option value="3">3 days</option>
+          <option value="5">5 days</option>
+        </select>
+      </div>
+      <button class="ob-btn" onclick="goStep2Next()">Continue →</button>
+    </div>
+  </div>
+
+  <!-- Step 3: Locations -->
+  <div class="ob-card" id="step-3" style="display:none">
+    <div class="ob-step-label">Step 3 of 3 &nbsp;·&nbsp; Campus Locations</div>
+    <div class="ob-title">Define your campus zones</div>
+    <div class="ob-sub">Terra tracks metrics per location so you know exactly where issues originate. Add the zones that exist on your campus.</div>
+    <div class="ob-form">
+      <div class="ob-field">
+        <label>Select Standard Zones (tick all that apply)</label>
+        <div class="module-grid" style="margin-top:.3rem">
+          <div class="module-chip selected" data-loc="Hostel"    onclick="toggleMod(this)"><span class="icon">🏠</span> Hostel</div>
+          <div class="module-chip selected" data-loc="Canteen"   onclick="toggleMod(this)"><span class="icon">🍽️</span> Canteen</div>
+          <div class="module-chip selected" data-loc="Academic Block" onclick="toggleMod(this)"><span class="icon">🏫</span> Academic</div>
+          <div class="module-chip"          data-loc="Library"   onclick="toggleMod(this)"><span class="icon">📚</span> Library</div>
+          <div class="module-chip"          data-loc="Sports Ground" onclick="toggleMod(this)"><span class="icon">⚽</span> Sports</div>
+          <div class="module-chip"          data-loc="Labs"      onclick="toggleMod(this)"><span class="icon">🔬</span> Labs</div>
+          <div class="module-chip"          data-loc="Admin Block" onclick="toggleMod(this)"><span class="icon">🏢</span> Admin</div>
+          <div class="module-chip"          data-loc="Parking"   onclick="toggleMod(this)"><span class="icon">🚗</span> Parking</div>
+          <div class="module-chip"          data-loc="Gardens"   onclick="toggleMod(this)"><span class="icon">🌿</span> Gardens</div>
+        </div>
+      </div>
+      <div class="ob-field">
+        <label>Custom Zone Name (optional)</label>
+        <input id="s3-custom" placeholder="e.g. Block C, Lab Complex, Main Ground…" />
+      </div>
+      <button class="ob-btn" onclick="launchApp()">Launch Terra →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     APP
+══════════════════════════════════════════════════════════ -->
+<div id="app" style="display:none">
+  <div class="topbar">
+    <div class="logo-small">Terr<span>a</span></div>
+    <div class="campus-pill"><strong id="tb-campus">—</strong> &nbsp;·&nbsp; <span id="tb-city">—</span></div>
+    <div class="topbar-right">
+      <div class="live-dot"></div><span class="live-label">LIVE</span>
+      <button class="reset-btn" onclick="resetApp()">← Reset / New Campus</button>
+    </div>
+  </div>
+  <div class="main-layout">
+    <aside class="sidebar">
+      <div class="nav-section-label">Overview</div>
+      <div class="nav-item active" onclick="showView('dashboard',this)"><span class="ni">▦</span> Dashboard</div>
+      <div class="nav-item" onclick="showView('alerts',this)"><span class="ni">🔔</span> Alerts <span class="badge" id="alert-badge">1</span></div>
+      <div class="nav-item" onclick="showView('log',this)"><span class="ni">＋</span> Log Entry</div>
+      <div class="nav-item" onclick="showView('esg',this)"><span class="ni">◎</span> ESG Metrics</div>
+      <div class="nav-item" onclick="showView('data',this)"><span class="ni">⊞</span> Raw Data</div>
+      <div class="nav-item" onclick="showView('report',this)"><span class="ni">↗</span> Report</div>
+      <div class="module-section">
+        <div class="nav-section-label">Active Modules</div>
+        <div id="mod-nav"></div>
+      </div>
+    </aside>
+    <main class="content" id="main-content">
+      <!-- views injected here -->
+    </main>
+  </div>
+</div>
+
+<!-- Load order matters: state → engine → onboarding/nav → view renderers -->
+<script src="js/state.js"></script>
+<script src="js/anomalyDetection.js"></script>
+<script src="js/onboarding.js"></script>
+<script src="js/navigation.js"></script>
+<script src="js/views/dashboard.js"></script>
+<script src="js/views/alerts.js"></script>
+<script src="js/views/logEntry.js"></script>
+<script src="js/views/esg.js"></script>
+<script src="js/views/dataTable.js"></script>
+<script src="js/views/report.js"></script>
+</body>
+</html>
